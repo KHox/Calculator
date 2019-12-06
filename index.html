@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+  <title>Calc</title>
+  <link rel="stylesheet" type="text/css" href="css\styles.css">
+  <script src="scripts/lib.js"></script>
+  <script src="scripts/canvas.js"></script>
+  <script src="scripts/CoordinatePlane.js"></script>
+  <script src="scripts/display.js"></script>
+  <script src="scripts/input.js"></script>
+  <script src="scripts/output.js"></script>
+  <script src="scripts/table.js"></script>
+  <script src="scripts/calculator.js"></script>
+
+  <script src="scripts/buttons/Button.js"></script>
+  <script src="scripts/buttons/EraseButton.js"></script>
+  <script src="scripts/buttons/FunctionButton.js"></script>
+  <script src="scripts/buttons/GetAnswerButton.js"></script>
+  <script src="scripts/buttons/NumberButton.js"></script>
+  <script src="scripts/buttons/OperatorButton.js"></script>
+  <script src="scripts/buttons/VariableButton.js"></script>
+</head>
+
+<body>
+
+  <template id="calcTempl">
+    <div class="wrapper">
+      <div class="header">
+        <div class="disp">
+          <div class="input"></div>
+          <div class="output"></div>
+        </div>
+        <div class="buttons"></div>
+      </div>
+      <table>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+        </tr>
+      </table>
+      <div class="canv-area"></div>
+    </div>
+  </template>
+
+  <div id="calculator"></div>
+  <div id="graph"></div>
+
+  <script src="scripts/main.js"></script>
+</body>
+
+</html>
