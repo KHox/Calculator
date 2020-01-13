@@ -3,27 +3,26 @@ class CoordinatePlane {
     this.elem = canvas;
   }
 
-  create(borders) {
-    this.difX = borders.right - borders.left;
-    this.xWidth = this.difX * 1.25;
-    this.coordOY = this.xToPx(this.difX / 8 - borders.left);
-    this.difY = borders.top < 0 ? -borders.bottom :
-      borders.bottom > 0 ? borders.top : borders.top - borders.bottom;
-    this.yWidth = this.difY * 1.25;
-    this.coordOX = this.yToPx(this.difY / 8 + (borders.top < 0 ? 0 : borders.top));
-    this.startX = -this.difX / 8 + borders.left;
+  create(options) {
+    //On axis
+    this.difX = options.right - options.left;
+    this.difY = options.top - options.bottom;
+    this.startX = +options.left;
+    //In pixels
+    this.pxIndX = -this.xToPx(options.left) % options.gridStep;
+    this.pxIndY = this.yToPx(options.top) % options.gridStep;
+    this.xAxis = this.yToPx(options.top);
+    this.yAxis = -this.xToPx(options.left);
+
+
+    this.gridStep = +options.gridStep;
   }
 
   xToPx(value) {
-    return value / this.xWidth * this.elem.width;
+    return value / this.difX * this.elem.width;
   }
 
   yToPx(value) {
-    return value / this.yWidth * this.elem.height;
-  }
-
-  calcIndents(step) {
-    this.indX = this.coordOY % step;
-    this.indY = this.coordOX % step;
+    return value / this.difY * this.elem.height;
   }
 }

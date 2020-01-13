@@ -1,14 +1,23 @@
-let operators = {
-  '*': '×',
-  '/': '÷',
-  '-': '−',
-  '+': '+',
-  '.': ','
-};
-let sections = [
-  ['sin', 'cos', 7, 8, 9, '*'],
-  ['tg', 'ctg', 4, 5, 6, '/'],
-  ['pow', 'sqrt', 1, 2, 3, '+'],
-  ['', 'x', '.', 0, '-', '']
-];
-let calculator = new Calculator(document.querySelector('#calculator'), sections);
+document.querySelector('.menu-buttons').addEventListener('click', function(e) {
+  if (!e.target.classList.contains('menu-button')) return;
+  let active = this.querySelector('.active-button');
+  if (e.target != active) {
+    active.classList.remove('active-button');
+    document.querySelector(`#${active.dataset.id}`).style.display = 'none';
+    e.target.classList.add('active-button');
+    document.querySelector(`#${e.target.dataset.id}`).style.display = '';
+    if (e.target.dataset.id == 'graph' && !graph) {
+      graph = new Graph(document.querySelector('#graph'));
+      graph.drawGrid(40);
+    }
+  }
+})
+
+let calculator = new Calculator(document.querySelector('#calculator'));
+let graph;
+
+/*
+document.querySelector('div[data-id="graph"]').dispatchEvent(new Event('click', {
+  bubbles: true
+}));
+*/

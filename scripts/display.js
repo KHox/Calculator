@@ -1,22 +1,53 @@
 class Display {
-  constructor(elem, caller) {
-    this.htmlElem = elem;
-    elem.obj = this;
-    this.caller = caller;
-    this.input = Input.create();
-    this.output = new Output(elem.lastElementChild, this);
-    elem.firstElementChild.appendChild(this.input.htmlElem);
+  constructor(elem) {
+    this.elem = elem;
+    this.input = elem.querySelector('.display__input');
+    this.output = elem.querySelector('.display__output');
   }
 
-  insert(obj) {
-    this.input.insert(obj);
+  print(str) {
+    let inp = this.input;
+    inp.setRangeText(str, inp.selectionStart, inp.selectionEnd, 'end');
+    inp.focus();
+  }
+
+  printFunction(func, typeArr) {
+    let inp = this.input;
+    let start = inp.selectionStart;
+    let end = inp.selectionEnd;
+    let selected = inp.value.slice(start, end);
+    inp.setRangeText(`${func}${typeArr[0]}${selected}${typeArr[1]}`);
+    let indent = func.length + 1;
+    inp.setSelectionRange(start + indent, end + indent);
+    inp.focus();
   }
 
   getAnswer() {
-    this.output.getAnswer(this.input);
+    let str = replaceAll(this.input.value, toCode);
+    let answer;
+    try {
+      answer = eval(str);
+    } catch (e) {
+      alert('Ошибка в формуле!');
+      return;
+    }
+    if (isNumeric(answer)) {
+      this.output.textContent = +answer.toFixed(10);
+    }
   }
 
   erase() {
-    this.input.erase();
+    let inp = this.input;
+    if (inp.selectionStart == inp.selectionEnd && inp.selectionStart > 0) {
+      inp.setRangeText('', inp.selectionStart - 1, inp.selectionStart);
+    } else {
+      inp.setRangeText('');
+    }
+    inp.focus();
+  }
+
+  clear() {
+    this.input.value = '';
+    this.input.focus();
   }
 }

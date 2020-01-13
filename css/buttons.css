@@ -1,0 +1,28 @@
+.func {
+  background-color: #75a3fc;
+}
+
+.num {
+  background-color: #a8b1c2;
+}
+
+.oper {
+  background-color: #44cadd;
+}
+
+.spec {
+  background-color: #58cdff;
+}
+
+.var {
+  background-color: #6ecff2;
+}
+
+.del {
+  background-color: #e6899c;
+  margin-bottom: 4px;
+}
+
+.answ {
+  background-color: #8d89e6;
+}

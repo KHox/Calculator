@@ -4,23 +4,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
   <title>Calc</title>
+  <link rel="stylesheet" type="text/css" href="css\buttons.css">
   <link rel="stylesheet" type="text/css" href="css\styles.css">
   <script src="scripts/lib.js"></script>
-  <script src="scripts/canvas.js"></script>
+  <script src="scripts/graph.js"></script>
   <script src="scripts/CoordinatePlane.js"></script>
   <script src="scripts/display.js"></script>
-  <script src="scripts/input.js"></script>
-  <script src="scripts/output.js"></script>
-  <script src="scripts/table.js"></script>
   <script src="scripts/calculator.js"></script>
-
-  <script src="scripts/buttons/Button.js"></script>
-  <script src="scripts/buttons/EraseButton.js"></script>
-  <script src="scripts/buttons/FunctionButton.js"></script>
-  <script src="scripts/buttons/GetAnswerButton.js"></script>
-  <script src="scripts/buttons/NumberButton.js"></script>
-  <script src="scripts/buttons/OperatorButton.js"></script>
-  <script src="scripts/buttons/VariableButton.js"></script>
 </head>
 
 <body>
@@ -48,8 +38,156 @@
     </div>
   </template>
 
-  <div id="calculator"></div>
-  <div id="graph"></div>
+  <div class="main-element">
+    <div class="menu-buttons">
+      <div class="menu-button active-button" data-id="calculator">Калькулятор</div>
+      <div class="menu-button" data-id="graph">График</div>
+    </div>
+    <div class="line"></div>
+    <table id="calculator" class="calculator">
+      <tr>
+        <td class="calculator__display" colspan="5" rowspan="2">
+          <input value="1000" class="display__input">
+          <div class="display__output">1000</div>
+        </td>
+        <td class="del">←</td>
+      </tr>
+      <tr>
+        <td class="answ">=</td>
+      </tr>
+      <tr>
+        <td class="changeMenu">...</td>
+        <td class="func">sqrt</td>
+        <td class="delAll">C</td>
+        <td class="const">π</td>
+        <td class="const">e</td>
+        <td class="oper">+</td>
+      </tr>
+      <tr>
+        <td class="func"></td>
+        <td class="spec-func">|x|</td>
+        <td class="num">7</td>
+        <td class="num">8</td>
+        <td class="num">9</td>
+        <td class="oper">+</td>
+      </tr>
+      <tr>
+        <td class="func replaceble">sin</td>
+        <td class="func replaceble">cos</td>
+        <td class="num">4</td>
+        <td class="num">5</td>
+        <td class="num">6</td>
+        <td class="oper">−</td>
+      </tr>
+      <tr>
+        <td class="func replaceble">tan</td>
+        <td class="func">ctg</td>
+        <td class="num">1</td>
+        <td class="num">2</td>
+        <td class="num">3</td>
+        <td class="oper">×</td>
+      </tr>
+      <tr>
+        <td class="spec">(</td>
+        <td class="spec">)</td>
+        <td class="oper">^</td>
+        <td class="num">0</td>
+        <td class="oper">,</td>
+        <td class="oper">÷</td>
+      </tr>
+    </table>
+    <div id="graph" style="display: none">
+      <form class="settings">
+        <div class="settings__option">
+          По оси Y
+          <div class="settings_params">
+            от: <input class="from-y"> до: <input class="to-y">
+          </div>
+        </div>
+        <div class="settings__option">
+          По оси X
+          <div class="settings_params">
+            от: <input class="from-x"> до: <input class="to-x">
+          </div>
+        </div>
+        <div class="settings__option">
+          <div class="settings_params">
+            Точность: <input class="accuracy" value="0.0001">
+          </div>
+        </div>
+        <table class="graph__calculator calculator">
+          <tr>
+            <td class="calculator__display" colspan="5">
+              <div class="wrapper__input">
+                <span class="function-text">y = </span><input class="display__input">
+              </div>
+            </td>
+            <td class="del">←</td>
+          </tr>
+          <tr>
+            <td class="changeMenu">...</td>
+            <td class="func">sqrt</td>
+            <td class="delAll">C</td>
+            <td class="const">π</td>
+            <td class="const">e</td>
+            <td class="oper">x</td>
+          </tr>
+          <tr>
+            <td class="func">...</td>
+            <td class="func">sqrt</td>
+            <td class="num">7</td>
+            <td class="num">8</td>
+            <td class="num">9</td>
+            <td class="oper">+</td>
+          </tr>
+          <tr>
+            <td class="func" data-replaceble>sin</td>
+            <td class="func" data-replaceble>cos</td>
+            <td class="num">4</td>
+            <td class="num">5</td>
+            <td class="num">6</td>
+            <td class="oper">−</td>
+          </tr>
+          <tr>
+            <td class="func" data-replaceble>tan</td>
+            <td class="func">ctg</td>
+            <td class="num">1</td>
+            <td class="num">2</td>
+            <td class="num">3</td>
+            <td class="oper">×</td>
+          </tr>
+          <tr>
+            <td class="spec">(</td>
+            <td class="spec">)</td>
+            <td class="oper">^</td>
+            <td class="num">0</td>
+            <td class="oper">,</td>
+            <td class="oper">÷</td>
+          </tr>
+        </table>
+        <div class="settings__buttons">
+          <div class="settings__draw__button">Построить</div>
+          <input type="reset" class="settings__clear__button" value="Сбросить">
+        </div>
+      </form>
+
+      <canvas class="graph__canvas" height="400"></canvas>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    let orientation;
+    window.onresize = e => {
+      if ((window.innerWidth / window.innerHeight <= 0.8) && !orientation) {
+        document.querySelector('.display').setAttribute('colspan', 3);
+        orientation = true;
+      } else if ((window.innerWidth / window.innerHeight > 0.8) && orientation) {
+        document.querySelector('.display').setAttribute('colspan', 5);
+        orientation = false;
+      }
+    }
+    window.onorientationchange = alert;
+  </script>
 
   <script src="scripts/main.js"></script>
 </body>
