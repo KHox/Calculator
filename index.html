@@ -72,15 +72,15 @@
         <td class="oper">+</td>
       </tr>
       <tr>
-        <td class="func replaceble">sin</td>
-        <td class="func replaceble">cos</td>
+        <td class="func" data-replaceble>sin</td>
+        <td class="func" data-replaceble>cos</td>
         <td class="num">4</td>
         <td class="num">5</td>
         <td class="num">6</td>
         <td class="oper">−</td>
       </tr>
       <tr>
-        <td class="func replaceble">tan</td>
+        <td class="func" data-replaceble>tan</td>
         <td class="func">ctg</td>
         <td class="num">1</td>
         <td class="num">2</td>
@@ -134,7 +134,7 @@
           </tr>
           <tr>
             <td class="func">...</td>
-            <td class="func">sqrt</td>
+            <td class="spec-func">|x|</td>
             <td class="num">7</td>
             <td class="num">8</td>
             <td class="num">9</td>
@@ -174,20 +174,6 @@
       <canvas class="graph__canvas" height="400"></canvas>
     </div>
   </div>
-
-  <script type="text/javascript">
-    let orientation;
-    window.onresize = e => {
-      if ((window.innerWidth / window.innerHeight <= 0.8) && !orientation) {
-        document.querySelector('.display').setAttribute('colspan', 3);
-        orientation = true;
-      } else if ((window.innerWidth / window.innerHeight > 0.8) && orientation) {
-        document.querySelector('.display').setAttribute('colspan', 5);
-        orientation = false;
-      }
-    }
-    window.onorientationchange = alert;
-  </script>
 
   <script src="scripts/main.js"></script>
 </body>

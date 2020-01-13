@@ -23,7 +23,8 @@ input:focus {
   background-color: white;
   border-radius: 8px;
   position: absolute;
-  margin-top: -42px;
+  top: 162px;
+  left: 4px;
   height: 0;
   overflow: hidden;
   transition: height .13s linear
@@ -44,6 +45,7 @@ input:focus {
   display: block;
   height: 50%;
   line-height: 52px;
+  text-align: center;
   transition: background-color .2s linear;
 }
 
@@ -152,6 +154,8 @@ input:focus {
 }
 
 .settings_params input {
+  max-width: 365px;
+  width: 40%;
   background-color: inherit;
   border: 0;
   border-bottom: 2px solid #00b2ff;
@@ -240,60 +244,4 @@ input:focus {
   background-color: white;
 }
 
-@media (max-aspect-ratio: 8/10) {
-  table {
-    border-spacing: 10px
-  }
-
-  td {
-    display: none;
-    width: 25%;
-    height: 170px;
-    border-radius: 20px;
-  }
-
-  td:nth-last-child(1), td:nth-last-child(2),
-  td:nth-last-child(3), td:nth-last-child(4) {
-    display: table-cell !important;
-  }
-
-  #calculator {
-    font-size: 60px;
-    width: 80%;
-  }
-
-  .header {
-    height: 340px;
-    padding-left: 10px;
-    padding-right: 10px
-  }
-
-  .disp {
-    width: calc(75% - 2.5px);
-  }
-
-  .input {
-    border-radius: 20px 20px 0 0;
-  }
-
-  .output {
-    border-radius: 0 0 20px 20px;
-  }
-
-  .buttons {
-    width: calc(25% - 7.5px);
-  }
-
-  .buttons>* {
-    border-radius: 20px;
-  }
-
-  .content {
-    height: 60px;
-  }
-
-  .canv-area {
-    height: 800px;
-    border-radius: 20px;
-  }
-}
+@media (max-width: 550px) {}
