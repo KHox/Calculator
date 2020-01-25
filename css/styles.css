@@ -23,7 +23,6 @@ input:focus {
   background-color: white;
   border-radius: 8px;
   position: absolute;
-  top: 162px;
   left: 4px;
   height: 0;
   overflow: hidden;
@@ -47,6 +46,7 @@ input:focus {
   line-height: 52px;
   text-align: center;
   transition: background-color .2s linear;
+  cursor: pointer;
 }
 
 .calculator-menu li:hover {
@@ -108,6 +108,7 @@ input:focus {
   border-collapse: separate;
   border-spacing: 4px;
   table-layout: fixed;
+  position: relative;
 }
 
 .calculator__display>* {
