@@ -22,6 +22,12 @@ class Display {
     inp.focus();
   }
 
+  printLogFunc() {
+    this.printFunction('log', ['(', ')']);
+    let s = this.input.selectionStart;
+    this.input.setSelectionRange(s - 1, s - 1);
+  }
+
   getAnswer() {
     let str = replaceAll(this.input.value, toCode);
     let answer;

@@ -40,6 +40,9 @@ class Calculator {
           case 'spec-func':
             this.display.printFunction('', ['|', '|']);
             break;
+          case 'log-func':
+            this.display.printLogFunc();
+            break;
           case 'del':
             this.display.erase();
             break;

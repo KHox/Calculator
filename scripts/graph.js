@@ -5,8 +5,11 @@ class Graph {
     this.canvas.width = elem.clientWidth;
     this.ctx = this.canvas.getContext('2d');
     this.cps = {};
-    this.functions = [];
+    this.functions = this.current = [];
     this.calculator = new Calculator(elem.querySelector('.graph__calculator'));
+    if (this.elem.querySelector('input[type="checkbox"]').checked) {
+      this.elem.querySelector('div.checkbox').classList.add('checked');
+    }
     this.elem.onclick = e => {
       if (e.target.classList.contains('settings__draw__button')) {
         let options;
@@ -17,8 +20,6 @@ class Graph {
           return;
         }
 
-        console.log('optinos received');
-
         let func;
         try {
           func = this.getFunc();
@@ -27,14 +28,12 @@ class Graph {
           return;
         }
 
-        console.log('function received');
-
         this.canvas.scrollIntoView(false);
         this.drawGraph(func, options);
       } else if (e.target.classList.contains('settings__clear__button')) {
         Array.from(this.elem.querySelectorAll('.settings_params input')).forEach(inp => {
           inp.classList.remove('errored');
-        })
+        });
       }
     }
   }
@@ -64,28 +63,24 @@ class Graph {
       gridStep: options.gridStep
     });
     if (!options.multi || cp != this.cp) {
+      console.log('condition 1; !mu || !cp');
       this.clear();
-
-      console.log('cleared');
-
       this.drawGrid(options.gridStep, this.cp.pxIndX, this.cp.pxIndY);
-
-      console.log('CP drawn');
-
       this.drawLine(this.cp.xAxis);
       this.drawLine(this.cp.yAxis, true);
-
-      console.log('Axis drawn');
-    } else {
-      this.functions = [];
     }
 
     if (!options.multi) {
+      console.log('condition 2; !m');
       this.functions = [];
     }
 
-    this.functions.push(func);
+    this.addFunction(func);
     this.accuracy = options.accuracy;
+    if (options.multi && cp != this.cp) {
+      console.log('condition 3; m && !cp');
+      this.current = this.functions;
+    }
     this._drawGraph();
   }
 
@@ -106,7 +101,7 @@ class Graph {
 
     function draw(result) {
       if (result == 'Done') {
-        func = self.functions[i++];
+        func = self.current[i++];
         if (!func) return ctx.restore();
         ctx.moveTo(-cp.yAxis, -cp.yToPx(func(cp.startX)));
         ctx.beginPath()
@@ -223,9 +218,7 @@ class Graph {
     let func = replaceAll(input.value, toCode);
 
     if (isValidFunction(func)) {
-      return function(x) {
-        return eval(func);
-      }
+      return new Function('x', `return eval(${func});`);
     } else {
       input.classList.add('errored');
       input.onfocus = function() {
@@ -233,6 +226,19 @@ class Graph {
         this.onfocus = null;
       }
       throw new Error('Invalid function');
+    }
+  }
+
+  addFunction(func) {
+    this.current = [];
+    let k = false;
+    for (let f of this.functions) {
+      if (func + '' == '' + f) k = true;
+    }
+
+    if (!k) {
+      this.functions.push(func);
+      this.current = [func];
     }
   }
 }

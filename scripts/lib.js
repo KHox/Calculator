@@ -27,6 +27,7 @@ let toCode = {
   '−': '-',
   ',': '.',
   '^': '**',
+  'log(\\d*)\\((.*)\\)': 'MathPlus.lgrfm($1, $2)',
   '([^a-zA-Z]\\d)([a-z\\(])': '$1*$2',
   '(^\\d)([a-z\\(])': '$1*$2',
   '\\)(\\d)': ')*$1',
@@ -45,6 +46,10 @@ let MathPlus = {
   },
   ct(x) {
     return Math.cos(x) / Math.sin(x).toFixed(`${graph.accuracy}`.length - 2);
+  },
+
+  lgrfm(base, val) {
+    return Math.log(val) / Math.log(base);
   }
 }
 
