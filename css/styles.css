@@ -154,13 +154,58 @@ input:focus {
   margin: 20px 0;
 }
 
-.settings_params input {
+.settings_params {
+  display: flex;
+}
+
+.settings_params * {
   max-width: 365px;
   width: 40%;
   background-color: inherit;
   border: 0;
   border-bottom: 2px solid #00b2ff;
   color: white;
+  margin-left: 6px;
+}
+
+.settings_params .checkbox {
+  border-radius: 5px;
+  border: 3px solid white;
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.settings_params .checkbox.checked {
+  background-color: #0094ff;
+}
+
+.settings_params .checkbox::after {
+  display: block;
+  content: "";
+  width: 24px;
+  height: 27px;
+  border-radius: 60px;
+  transition-property: top, left, border;
+  transition-duration: .05s;
+  position: relative;
+  top: -3px;
+  left: -3px;
+  line-height: 20px;
+  padding-left: 3px;
+}
+
+.settings_params .checkbox.checked::after {
+  content: "✔"
+}
+
+.settings_params .checkbox:active::after {
+  opacity: 0.15;
+  border: 12px solid white;
+  top: -15px;
+  left: -15px;
 }
 
 .settings__buttons {

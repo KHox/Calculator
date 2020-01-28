@@ -8,6 +8,13 @@ document.querySelector('.menu-buttons').addEventListener('click', function(e) {
     document.querySelector(`#${e.target.dataset.id}`).style.display = '';
     if (e.target.dataset.id == 'graph' && !graph) {
       graph = new Graph(document.querySelector('#graph'));
+      graph.setCoordPlane({
+        bottom: -1,
+        top: 1,
+        left: -4,
+        right: 4,
+        gridStep: 40
+      });
       graph.drawGrid(40);
     }
   }
