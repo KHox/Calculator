@@ -57,6 +57,7 @@ class Calculator {
             this.toggleMenu(e);
             break;
         }
+        if (this.isPhoneMod) this.display.blur();
       }
     });
 

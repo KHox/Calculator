@@ -56,4 +56,8 @@ class Display {
     this.input.value = '';
     this.input.focus();
   }
+
+  blur() {
+    this.input.blur();
+  }
 }

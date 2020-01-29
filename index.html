@@ -17,11 +17,13 @@
 <body>
   <div class="main-element">
     <div class="menu-buttons">
-      <div class="menu-button active-button" data-id="calculator">Калькулятор</div>
+      <div class="menu-button active-button" data-id="calculator">
+        Калькулятор</div>
       <div class="menu-button" data-id="graph">График</div>
       <div class="theme">
         <div class="blue"></div>
-        <div class="slider" onclick="let mE = document.querySelector('.main-element');
+        <div class="slider" onclick="let mE = document.querySelector(
+        '.main-element');
         if (mE.classList.contains('orange')) {
           mE.classList.remove('orange');
           this.firstElementChild.style.left = '0px';
@@ -38,7 +40,7 @@
     <table id="calculator" class="calculator">
       <tr>
         <td class="calculator__display" colspan="5" rowspan="2">
-          <input value="1000" class="display__input">
+          <input class="display__input">
           <div class="display__output">1000</div>
         </td>
         <td class="del">←</td>

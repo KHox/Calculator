@@ -23,7 +23,7 @@
 }
 
 .orange .display__output {
-  background-color: #fca24e
+  background-color: #fca24e;
 }
 
 .orange .answ {
@@ -61,5 +61,5 @@
 }
 
 .orange .settings_params .checkbox.checked {
-  background-color: #f7992d
+  background-color: #f7992d;
 }
