@@ -1,0 +1,52 @@
+.func, .log-func, .spec-func {
+  background-color: #75a3fc;
+}
+
+.num {
+  background-color: #a8b1c2;
+}
+
+.oper {
+  background-color: #44cadd;
+}
+
+.spec {
+  background-color: #58cdff;
+}
+
+.var {
+  background-color: #6ecff2;
+}
+
+.del {
+  background-color: #e6899c;
+  margin-bottom: 4px;
+}
+
+.answ {
+  background-color: #8d89e6;
+}
+
+.line {
+  background-color: #4d70eb;
+}
+
+.menu-button:hover {
+  background-color: #9d9d9d;
+}
+
+.active-button {
+  background-color: #d9d9d9 !important;
+}
+
+.const {
+  background-color: #8069dd;
+}
+
+.delAll {
+  background-color: #ff77a4;
+}
+
+.changeMenu {
+  background-color: #8ccefe;
+}

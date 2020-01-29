@@ -8,12 +8,13 @@ class Calculator {
       if (window.innerWidth <= 550 && !this.isPhoneMod) {
         this.isPhoneMod = true;
         display.setAttribute('colspan', 3);
-        this.hideHidebleButtons();
+        this.toggleHidebleButtons();
         this.hideMenu();
       } else if (window.innerWidth > 550 && this.isPhoneMod) {
         this.isPhoneMod = false;
         display.setAttribute('colspan', 5);
-        this.showHidebleButtons();
+        this.toggleHidebleButtons();
+        this.replaceButtons('mobile');
         this.hideMenu();
       }
       if (this.menu && this.menu.classList.contains('open')) {
@@ -108,26 +109,18 @@ class Calculator {
   replaceButtons(type) {
     let buttons = this.elem.querySelectorAll(`td[data-${type}]`);
     for (let button of buttons) {
-      button.innerHTML = button.dataset[type];
-      let tc = button.dataset.toggleclass;
-      if (tc) {
-        button.dataset.toggleclass = button.className;
-        button.className = tc;
+      let [content, cls] = button.dataset[type].split(' ');
+      button.innerHTML = content;
+      if (cls) {
+        button.className = cls;
       }
     }
   }
 
-  hideHidebleButtons() {
+  toggleHidebleButtons() {
     let buttons = this.elem.querySelectorAll('[data-hideble]');
     for (let button of buttons) {
-      button.hidden = true;
-    }
-  }
-
-  showHidebleButtons() {
-    let buttons = this.elem.querySelectorAll('[data-hideble]');
-    for (let button of buttons) {
-      button.hidden = false;
+      button.hidden = !button.hidden;
     }
   }
 }

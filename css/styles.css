@@ -16,7 +16,48 @@ input:focus {
 }
 
 .errored {
-  background-color: red !important;
+  background-color: #fc3636 !important;
+}
+
+.theme {
+  width: auto;
+  height: 100%;
+  margin-left: auto;
+  align-items: center;
+  display: flex;
+}
+
+.theme .blue {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  margin-left: 3%;
+  background-color: #2d72e7;
+}
+
+.theme .slider {
+  width: 56px;
+  height: 20px;
+  margin: 0 10px 0 10px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.theme .stage {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  transition: left .2s;
+}
+
+.theme .orange {
+  background-color: orange;
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
 }
 
 .calculator-menu {
@@ -80,14 +121,6 @@ input:focus {
   text-align: center;
   cursor: pointer;
   transition: background-color .2s linear;
-}
-
-.menu-button:hover {
-  background-color: #9d9d9d;
-}
-
-.active-button {
-  background-color: #d9d9d9 !important;
 }
 
 .line {
@@ -175,6 +208,7 @@ input:focus {
   display: inline-block;
   margin-top: auto;
   margin-bottom: auto;
+  cursor: pointer;
 }
 
 .settings_params .checkbox.checked {
@@ -288,5 +322,3 @@ input:focus {
   margin-top: 20px;
   background-color: white;
 }
-
-@media (max-width: 550px) {}

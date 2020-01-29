@@ -22,9 +22,3 @@ document.querySelector('.menu-buttons').addEventListener('click', function(e) {
 
 let calculator = new Calculator(document.querySelector('#calculator'));
 let graph;
-
-/*
-document.querySelector('div[data-id="graph"]').dispatchEvent(new Event('click', {
-  bubbles: true
-}));
-*/

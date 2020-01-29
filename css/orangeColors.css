@@ -1,0 +1,65 @@
+.orange .line {
+  background-color: yellow;
+}
+
+.orange .del {
+  background-color: #d24b3e;
+}
+
+.orange .oper {
+  background-color: #e66529;
+}
+
+.orange .func, .orange .spec-func, .orange .log-func {
+  background-color: #fcc95b;
+}
+
+.orange .spec {
+  background-color: #ed8b40;
+}
+
+.orange .wrapper__input, .orange .display__input {
+  background-color: #fcb16a;
+}
+
+.orange .display__output {
+  background-color: #fca24e
+}
+
+.orange .answ {
+  background-color: #ffc342;
+}
+
+.orange .num {
+  background-color: #ada89e;
+}
+
+.orange .delAll {
+  background-color: #e86351;
+}
+
+.orange .const {
+  background-color: #f0663c;
+}
+
+.orange .changeMenu {
+  background-color: #edb439;
+}
+
+.orange .settings__draw__button {
+  background-color: #faba8c;
+  border-color: #db905a;
+}
+
+.orange .settings__clear__button {
+  background-color: #f75959;
+  border-color: #cc3737;
+}
+
+.orange .settings_params * {
+  border-color: red
+}
+
+.orange .settings_params .checkbox.checked {
+  background-color: #f7992d
+}
