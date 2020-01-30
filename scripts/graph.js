@@ -63,7 +63,6 @@ class Graph {
       gridStep: options.gridStep
     });
     if (!options.multi || cp != this.cp) {
-      console.log('condition 1; !mu || !cp');
       this.clear();
       this.drawGrid(options.gridStep, this.cp.pxIndX, this.cp.pxIndY);
       this.drawLine(this.cp.xAxis);
@@ -71,14 +70,12 @@ class Graph {
     }
 
     if (!options.multi) {
-      console.log('condition 2; !m');
       this.functions = [];
     }
 
     this.addFunction(func);
     this.accuracy = options.accuracy;
     if (options.multi && cp != this.cp) {
-      console.log('condition 3; m && !cp');
       this.current = this.functions;
     }
     this._drawGraph();
@@ -105,7 +102,6 @@ class Graph {
         if (!func) return ctx.restore();
         ctx.moveTo(-cp.yAxis, -cp.yToPx(func(cp.startX)));
         ctx.beginPath()
-        console.log('start');
         x = cp.startX + accuracy;
       }
       new Promise(smallDraw).then(draw);

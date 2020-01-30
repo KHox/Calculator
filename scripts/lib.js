@@ -53,24 +53,6 @@ let MathPlus = {
   }
 }
 
-let isFuncSymb = s => isNaN(s) && !toCode(s) && s != '(' && s != ')';
-
-function getTextWidth(text) {
-  var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-  var context = canvas.getContext("2d");
-  context.font = "Arial 60px";
-  var metrics = context.measureText(text);
-  return metrics.width;
-}
-
-function replaceByFunc(str, func) {
-  let newStr = '';
-  for (char of str) {
-    newStr += func(char);
-  }
-  return newStr;
-}
-
 function replaceAll(str, options) {
   for (let [key, value] of Object.entries(options)) {
     let r;
@@ -78,7 +60,6 @@ function replaceAll(str, options) {
     else r = new RegExp(key, 'g');
     while (r.test(str)) {
       str = str.replace(r, value);
-      console.log(str);
     }
   }
   return str;
